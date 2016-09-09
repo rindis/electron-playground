@@ -9,7 +9,7 @@ fun callFunction(deviceId: String, accessToken: String, functionName: String, ar
   val JSON = MediaType.parse("application/json; charset=utf-8")
   val requestBody = RequestBody.create(JSON, "{\"arg\": \"$arguments\"}")
   
-  val response = post(accessToken, deviceId + "/" + functionName, requestBody)
+  val response = post(accessToken, "$deviceId/$functionName", requestBody)
   
   val returnData = JSONObject(response.body().string())
   val id = returnData.getString("id")
