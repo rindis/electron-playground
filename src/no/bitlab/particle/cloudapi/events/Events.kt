@@ -11,14 +11,14 @@ fun addDeviceEventListener(deviceId: String, accessToken: String, eventPrefix: S
     while (!source.exhausted()) {
       val line = source.readUtf8Line()
       if (line.startsWith("event:")) {
-        val name = line.split("\\s+".toRegex())[1]
+        val name = line.split(":")[1].trim()
         val eventData = JSONObject(source.readUtf8Line().split("\\s+".toRegex())[1])
         val data = eventData.getString("data")
         val ttl = eventData.getString("ttl")
         val publishedAt = eventData.getString("published_at")
         val id = eventData.getString("coreid")
         
-        event(EventData(name, data, ttl, publishedAt, deviceId))
+        event(EventData(name, data, ttl, publishedAt, id))
       }
     }
   }

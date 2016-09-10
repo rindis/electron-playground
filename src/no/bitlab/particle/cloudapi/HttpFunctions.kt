@@ -35,6 +35,7 @@ fun get(accessToken: String, resource: String): Response {
   val client = OkHttpClient()
     .newBuilder()
     .readTimeout(0, TimeUnit.SECONDS)
+    .retryOnConnectionFailure(true)
     .build()
   
   return client.newCall(request).execute()

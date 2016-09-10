@@ -1,4 +1,4 @@
-package no.bitlab.particle.cloudapi.devices
+package no.bitlab.particle.cloudapi.devices.function
 
 import no.bitlab.particle.cloudapi.post
 import okhttp3.MediaType
